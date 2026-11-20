@@ -6,7 +6,7 @@ Prepared 2026-11-20. Synthetic examples only; no real expense records or credent
 
 - Repository: https://github.com/nursultanO6/expense-tracker
 - Baseline commit: 9ff1eb083ec89b2a3efdc7d9463e9d326e10a1a9 (9ff1eb0 small project); working tree was clean before assignment changes.
-- The baseline commit is preserved. Final source is the current working tree.
+- Baseline commit: 9ff1eb083ec89b2a3efdc7d9463e9d326e10a1a9. Final source/evidence commit: 6a2e3a8f1c3e5c959f61c667c50286c778c840de. The following audit-only commit records this final content hash.
 - Runtime: Python 3.9+ per README; standard library. Development dependency: pytest, unpinned in requirements.txt.
 - Entry point: python -m expense_tracker -> expense_tracker/__main__.py -> cli.py.
 - Modules: models.py (Expense/categories), calculator.py (validation/calculations), storage.py (JSON), reports.py (text/CSV/JSON), cli.py (argparse/dispatch).
@@ -85,7 +85,7 @@ Readiness level: 2 - Documented. Level 3 is not supported because dependencies a
 | git diff --check | PASS; no whitespace errors. Git warned about line-ending normalization. |
 | python -m pytest -q (PowerShell, user-run) | PASS: 16 passed in 0.13s. No tmp_path adapter was used. |
 
-Accounting: baseline pytest 14 passed, 0 failed; final pytest 16 passed, 0 failed; 7 focused checks passed, 0 failed. The final run was the user's ordinary PowerShell run with no fixture adapter. Raw output transcripts are included as pytest-baseline.txt and pytest-final.txt. No screenshots: this is a text CLI with no visual interface.
+Accounting: baseline pytest 14 passed, 0 failed; final pytest 16 passed, 0 failed; 7 focused checks passed, 0 failed. The final run was the user's ordinary PowerShell run with no fixture adapter. Output excerpts with source notes are included as pytest-baseline.txt and pytest-final.txt. The final result was reported by the user from their PowerShell run. No screenshots: this is a text CLI with no visual interface.
 
 Residual risks: R1/R2 are covered by regression tests and the full suite passes. R3/R4/R5/R6 remain as classified above.
 
