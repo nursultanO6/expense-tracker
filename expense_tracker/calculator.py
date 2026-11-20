@@ -10,6 +10,13 @@ def add_expense(expenses, amount, category, description, date_str=None):
         raise ValueError("amount must be greater than 0")
     if category not in CATEGORIES:
         raise ValueError(f"unknown category: {category}")
+    if date_str is not None:
+        try:
+            parsed_date = _date.fromisoformat(date_str)
+        except (TypeError, ValueError) as err:
+            raise ValueError("date must be a valid date in YYYY-MM-DD format") from err
+        if parsed_date.isoformat() != date_str:
+            raise ValueError("date must be a valid date in YYYY-MM-DD format")
     expense = Expense(
         id=next_id(expenses),
         amount=round(amount, 2),

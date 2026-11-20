@@ -34,6 +34,14 @@ Categories: `food`, `transport`, `rent`, `fun`, `other`.
 python -m pytest
 ```
 
+Focused checks for the Assignment 05 fixes (Python standard library only):
+```bash
+python -m tests.verify_assignment05
+```
+
+Dates supplied to `add` must be real calendar dates in `YYYY-MM-DD` format.
+CSV descriptions are escaped according to the standard CSV format.
+
 ## Project layout
 ```
 expense_tracker/

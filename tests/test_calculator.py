@@ -34,6 +34,12 @@ def test_add_expense_rejects_unknown_category():
         add_expense([], 5, "crypto", "Coins")
 
 
+def test_add_expense_rejects_invalid_or_noncanonical_date():
+    for value in ("2026-02-30", "2026-2-03", "not-a-date"):
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+            add_expense([], 5, "food", "Lunch", value)
+
+
 def test_total():
     assert total(make_sample()) == 35.50
 

@@ -1,3 +1,5 @@
+import csv
+import io
 import json
 
 from .calculator import total, totals_by_category
@@ -13,10 +15,12 @@ def render_report(expenses, fmt):
         lines.append(f"TOTAL: {total(expenses):.2f}")
         return "\n".join(lines)
     elif fmt == "csv":
-        lines = ["date,category,amount,description"]
+        output = io.StringIO(newline="")
+        writer = csv.writer(output, lineterminator="\n")
+        writer.writerow(("date", "category", "amount", "description"))
         for e in expenses:
-            lines.append(f"{e.date},{e.category},{e.amount:.2f},{e.description}")
-        return "\n".join(lines)
+            writer.writerow((e.date, e.category, f"{e.amount:.2f}", e.description))
+        return output.getvalue().rstrip("\n")
     elif fmt == "json":
         return json.dumps(
             {"expenses": [e.to_dict() for e in expenses], "total": total(expenses)},
